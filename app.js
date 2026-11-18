@@ -17,6 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // Rutas de la API
 app.use('/api/auth', require('./routes/auth-api'))
+app.use('/api/servicios', require('./routes/servicios-api'))
 
 // Conexión a MongoDB: el servidor solo arranca si la conexión funciona
 async function start() {
