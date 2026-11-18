@@ -1,0 +1,10 @@
+# Dependencias node
+/node_modules
+# Variables de entorno
+.env
+.env.*
+# Subir el .env de ejemplo
+!.env.example
+# Logs y archivos del sistema
+npm-debug.log*
+.DS_Store
