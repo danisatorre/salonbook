@@ -4,12 +4,12 @@ const reservaSchema = new mongoose.Schema(
   {
     usuario: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Usuario', // permite usar populate('usuario')
+      ref: 'Usuario', // referencia a la tabla coleccion Usuario
       required: [true, 'El usuario es obligatorio']
     },
     servicio: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Servicio',
+      ref: 'Servicio', // Referencia a la colección Servicio
       required: [true, 'El servicio es obligatorio']
     },
     fecha: {
