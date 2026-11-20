@@ -283,6 +283,17 @@ a:focus-visible,
   color: var(--complementario);
 }
 
+/* Botones "Ver detalles" y "Reservar" uno al lado del otro */
+.servicio__acciones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.servicio__acciones .boton {
+  padding: 0.75rem 0.5rem;
+}
+
 /* Mensajes de carga / error / lista vacía */
 .mensaje {
   text-align: center;

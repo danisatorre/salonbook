@@ -3,8 +3,8 @@ const modeloServicio = require('../models/servicio')
 
 // Campos que se pueden enviar al crear o editar
 function datosServicio(body) {
-  const { nombre, descripcion, precio, duracion, activo } = body
-  return { nombre, descripcion, precio, duracion, activo }
+  const { nombre, descripcion, precio, duracion, activo, imgServicio } = body
+  return { nombre, descripcion, precio, duracion, activo, imgServicio }
 }
 
 // Respuesta común para errores de validación y errores inesperados

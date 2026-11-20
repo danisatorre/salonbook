@@ -23,6 +23,14 @@ router.get('/mis-reservas', (req, res) => {
 router.get('/reservas', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'views', 'reservar.html'))
 })
+// Página de detalle de un servicio
+router.get('/servicios/:id', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'views', 'servicio.html'))
+})
+// Si no se introduce el id del servicio redireccionamos a los servicios de home
+router.get('/servicios', (req, res) => {
+  res.redirect('/#servicios')
+})
 // Página de admin
 router.get('/admin', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'views', 'admin.html'))

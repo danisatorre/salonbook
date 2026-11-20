@@ -24,7 +24,10 @@ async function listarServicios() {
                         <span class='servicio__precio'>${servicio.precio} €</span>
                         <span class='servicio__duracion'>${servicio.duracion} min</span>
                     </div>
-                    <a class='boton boton--principal' href='/reservas?servicio=${servicio._id}'>Reservar</a>
+                    <div class='servicio__acciones'>
+                        <a class='boton boton--secundario' href='/servicios/${servicio._id}'>Ver detalles</a>
+                        <a class='boton boton--principal' href='/reservas?servicio=${servicio._id}'>Reservar</a>
+                    </div>
                 </article>
             `
         }

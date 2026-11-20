@@ -26,6 +26,10 @@ const servicioSchema = new mongoose.Schema(
       min: [30, 'La duracion minima es de 30 minutos'],
       max: [480, 'La duracion maxima es de 480 minutos']
     },
+    imgServicio: {
+      type: String,
+      default: ''
+    },
     activo: {
       type: Boolean,
       default: true
