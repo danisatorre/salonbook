@@ -63,11 +63,11 @@ function validate_login() {
     var mail_regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     var error = false;
 
-    if (document.getElementById('email').value.trim().length === 0) {
+    if (document.getElementById('email').value.length === 0) {
         document.getElementById('error_email_log').innerHTML = "* Escribe tu correo electrónico";
         error = true;
     } else {
-        if (!mail_regex.test(document.getElementById('email').value.trim())) {
+        if (!mail_regex.test(document.getElementById('email').value)) {
             document.getElementById('error_email_log').innerHTML = "* El formato del correo no es válido";
             error = true;
         } else {
