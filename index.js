@@ -20,6 +20,9 @@ app.use('/api/auth', require('./routes/auth-api'))
 app.use('/api/servicios', require('./routes/servicios-api'))
 app.use('/api/reservas', require('./routes/reservas-api'))
 
+// Rutas de la WEB
+app.use('/', require('./routes/web-routes'))
+
 // Conexión a MongoDB: el servidor solo arranca si la conexión funciona
 async function start() {
   try {

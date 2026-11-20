@@ -2,9 +2,10 @@
   "name": "salonbook",
   "version": "1.0.0",
   "description": "Aplicación web de reservas para una peluquería",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node --watch app.js"
+    "start": "node index.js",
+    "dev": "node --watch index.js"
   },
   "repository": {
     "type": "git",

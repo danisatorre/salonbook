@@ -33,7 +33,7 @@ async function buscarPorId(id) {
 // Devuelve los servicios activos ordenados por nombre
 async function listar(req, res) {
   try {
-    const servicios = await modeloServicio.find({ activo: true }).sort({ nombre: 1 })
+    const servicios = await modeloServicio.find({ activo: true }).sort({ precio: 1})
     res.json(servicios)
   } catch (error) {
     responderError(res, error, 'Error al obtener los servicios')
