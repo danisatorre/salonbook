@@ -11,7 +11,13 @@
 <body>
   <header class="cabecera">
     <a href="/" class="logo">SalonBook</a>
-    <a href="/register" class="boton boton--secundario boton--pequeno">Registrarse</a>
+    <nav class="menu">
+      <a href="/login" class="menu__enlace" id="login">Iniciar sesión</a>
+      <a href="/register" class="boton boton--principal boton--pequeno" id="register">Registrarse</a>
+      <a href="/reservas" class="menu__enlace oculto" id="reservar-cita">Reservar cita</a>
+      <a href="/mis-reservas" class="menu__enlace oculto" id="mis-reservas">Ver mis citas</a>
+      <button class="boton boton--secundario boton--pequeno oculto" id="logout">Cerrar sesión</button>
+    </nav>
   </header>
 
   <main class="login">

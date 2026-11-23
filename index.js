@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 
 const app = express()
 const PORT = process.env.PORT;
-const mongodbHost = process.env.MONGODB_URL_MOVIES;
+const mongodbHost = process.env.MONGODB_URL;
 const mongoUser = process.env.MONGO_USER;
 const mongoPwd = process.env.MONGO_PASSWORD;
 const mongodbURL = `mongodb://${mongoUser}:${mongoPwd}@${mongodbHost}`;

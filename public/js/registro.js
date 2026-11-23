@@ -48,9 +48,10 @@ async function registrarUsuario(event) {
             window.location.href = '/login';
         }, 2000);
     } catch (error) {
-        mostrarMensaje(mensajeHTML, 'No se ha podido conectar con el servidor. Inténtalo más tarde.', 'error');
-        botonHTML.disabled = false;
-        botonHTML.innerHTML = `Crear cuenta`;
+        // mostrarMensaje(mensajeHTML, 'No se ha podido conectar con el servidor. Inténtalo más tarde.', 'error');
+        // botonHTML.disabled = false;
+        // botonHTML.innerHTML = `Crear cuenta`;
+        window.location.href = '/error';
     }
 }
 
@@ -128,3 +129,37 @@ function mostrarMensaje(mensajeHTML, texto, tipo) {
 }
 
 document.getElementById('form-registro').addEventListener('submit', registrarUsuario);
+
+function usuarioLogueado(){
+    const token = localStorage.getItem('token');
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+    const loginHTML = document.getElementById('login');
+    const registerHTML = document.getElementById('register');
+    const reservarCitaHTML = document.getElementById('reservar-cita');
+    const misReservasHTML = document.getElementById('mis-reservas');
+    const logoutHTML = document.getElementById('logout');
+    if(token && usuario){
+        loginHTML.classList.add('oculto');
+        registerHTML.classList.add('oculto');
+        reservarCitaHTML.classList.remove('oculto');
+        misReservasHTML.classList.remove('oculto');
+        logoutHTML.classList.remove('oculto');
+    }else{
+        loginHTML.classList.remove('oculto');
+        registerHTML.classList.remove('oculto');
+        reservarCitaHTML.classList.add('oculto');
+        misReservasHTML.classList.add('oculto');
+        logoutHTML.classList.add('oculto');
+    }
+    logoutHTML.addEventListener('click', () => {
+        logoutHTML.textContent = 'Cerrando sesión...';
+        logoutHTML.disabled = true;
+        setTimeout(() => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('usuario');
+            window.location.href = '/';
+        }, 2000);
+    });
+}
+
+usuarioLogueado();

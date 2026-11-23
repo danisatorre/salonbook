@@ -39,5 +39,9 @@ router.get('/admin', (req, res) => {
 router.get('/error', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'views', 'error.html'))
 })
+// Redireccionar a home si no existe la ruta
+router.use((req, res) => {
+  res.redirect('/')
+});
 
 module.exports = router

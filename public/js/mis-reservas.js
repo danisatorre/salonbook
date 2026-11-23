@@ -64,7 +64,6 @@ function pintarReserva(reserva, proxima){
     if(reserva.servicio){
         nombreServicio = reserva.servicio.nombre;
         precio = `<span class='reserva-tarjeta__precio'>${reserva.servicio.precio} €</span>`;
-        // Enlace a la página de detalle del servicio (/servicios/<id>)
         enlaceServicio = `<a class='enlace reserva-tarjeta__enlace' href='/servicios/${reserva.servicio._id}'>Ver información del servicio</a>`;
     }
 
@@ -153,12 +152,12 @@ async function listarReservas(){
             }
         }
     } catch (error) {
-        mostrarMensaje(mensajeHTML, 'No se han podido cargar tus reservas. Inténtalo más tarde.', 'error');
-        proximasMensajeHTML.innerHTML = '';
-        historialMensajeHTML.innerHTML = '';
+        // mostrarMensaje(mensajeHTML, 'No se han podido cargar tus reservas. Inténtalo más tarde.', 'error');
+        // proximasMensajeHTML.innerHTML = '';
+        // historialMensajeHTML.innerHTML = '';
+        window.location.href = '/error';
     }
 }
-
 
 async function cancelarReserva(e){
     // console.log(e, e.target);

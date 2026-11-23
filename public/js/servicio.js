@@ -41,7 +41,8 @@ async function mostrarServicio(){
         mensajeHTML.classList.add('oculto');
         detalleHTML.classList.remove('oculto');
     } catch (error) {
-        mostrarMensaje(mensajeHTML, 'No se ha podido cargar el servicio. Inténtalo más tarde.', 'error');
+        // mostrarMensaje(mensajeHTML, 'No se ha podido cargar el servicio. Inténtalo más tarde.', 'error');
+        window.location.href = '/error';
     }
 }
 
@@ -50,16 +51,19 @@ function usuarioLogueado(){
     const usuario = JSON.parse(localStorage.getItem('usuario'));
     const loginHTML = document.getElementById('login');
     const registerHTML = document.getElementById('register');
+    const reservarCitaHTML = document.getElementById('reservar-cita');
     const misReservasHTML = document.getElementById('mis-reservas');
     const logoutHTML = document.getElementById('logout');
     if(token && usuario){
         loginHTML.classList.add('oculto');
         registerHTML.classList.add('oculto');
+        reservarCitaHTML.classList.remove('oculto');
         misReservasHTML.classList.remove('oculto');
         logoutHTML.classList.remove('oculto');
     }else{
         loginHTML.classList.remove('oculto');
         registerHTML.classList.remove('oculto');
+        reservarCitaHTML.classList.add('oculto');
         misReservasHTML.classList.add('oculto');
         logoutHTML.classList.add('oculto');
     }

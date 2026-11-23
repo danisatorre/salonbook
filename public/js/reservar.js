@@ -63,7 +63,8 @@ async function cargarServicios(){
             mostrarInfoServicio();
         }
     } catch (error) {
-        mostrarMensaje(mensajeHTML, 'No se han podido cargar los servicios. Inténtalo más tarde.', 'error');
+        // mostrarMensaje(mensajeHTML, 'No se han podido cargar los servicios. Inténtalo más tarde.', 'error');
+        window.location.href = '/error';
     }
 }
 
@@ -133,7 +134,8 @@ async function cargarHoras(){
             `
         }
     } catch (error) {
-        horasMensajeHTML.innerHTML = `<a class='mensaje--error'>No se han podido cargar las horas. Inténtalo más tarde.</a>`;
+        // horasMensajeHTML.innerHTML = `<a class='mensaje--error'>No se han podido cargar las horas. Inténtalo más tarde.</a>`;
+        window.location.href = '/error';
     }
 }
 
@@ -205,9 +207,10 @@ async function crearReserva(event){
             window.location.href = '/mis-reservas';
         }, 2000);
     } catch (error) {
-        mostrarMensaje(mensajeHTML, 'No se ha podido conectar con el servidor. Inténtalo más tarde.', 'error');
-        botonHTML.disabled = false;
-        botonHTML.innerHTML = `Confirmar reserva`;
+        // mostrarMensaje(mensajeHTML, 'No se ha podido conectar con el servidor. Inténtalo más tarde.', 'error');
+        // botonHTML.disabled = false;
+        // botonHTML.innerHTML = `Confirmar reserva`;
+        window.location.href = '/error';
     }
 }
 
