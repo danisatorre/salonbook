@@ -14,7 +14,7 @@ async function registrarUsuario(event) {
     botonHTML.disabled = true;
     botonHTML.innerHTML = `Creando cuenta...`;
     try {
-        const response = await fetch('/api/auth/registro', {
+        const response = await fetch('api/auth/registro', {
             method: 'POST',
             body: JSON.stringify({
                 nombre: nombre,
@@ -45,13 +45,13 @@ async function registrarUsuario(event) {
         setTimeout(() => {
             // alert("Registro correcto");
             // return;
-            window.location.href = '/login';
+            window.location.href = 'login';
         }, 2000);
     } catch (error) {
         // mostrarMensaje(mensajeHTML, 'No se ha podido conectar con el servidor. Inténtalo más tarde.', 'error');
         // botonHTML.disabled = false;
         // botonHTML.innerHTML = `Crear cuenta`;
-        window.location.href = '/error';
+        window.location.href = 'error';
     }
 }
 
@@ -157,7 +157,7 @@ function usuarioLogueado(){
         setTimeout(() => {
             localStorage.removeItem('token');
             localStorage.removeItem('usuario');
-            window.location.href = '/';
+            window.location.href = './';
         }, 2000);
     });
 }

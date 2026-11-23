@@ -2,7 +2,7 @@ function comprobarSesion(){
     const token = localStorage.getItem('token');
     const usuario = JSON.parse(localStorage.getItem('usuario'));
     if(!token || !usuario){
-        window.location.href = '/login';
+        window.location.href = 'login';
         return false;
     }
     document.getElementById('saludo-usuario').innerHTML = `Hola ${usuario.nombre}, aquí puedes ver y cancelar tus citas.`;
@@ -64,7 +64,7 @@ function pintarReserva(reserva, proxima){
     if(reserva.servicio){
         nombreServicio = reserva.servicio.nombre;
         precio = `<span class='reserva-tarjeta__precio'>${reserva.servicio.precio} €</span>`;
-        enlaceServicio = `<a class='enlace reserva-tarjeta__enlace' href='/servicios/${reserva.servicio._id}'>Ver información del servicio</a>`;
+        enlaceServicio = `<a class='enlace reserva-tarjeta__enlace' href='servicios/${reserva.servicio._id}'>Ver información del servicio</a>`;
     }
 
     let estado = `<span class='estado estado--confirmada'>Confirmada</span>`;
@@ -103,7 +103,7 @@ async function listarReservas(){
     proximasHTML.innerHTML = '';
     historialHTML.innerHTML = '';
     try {
-        const response = await fetch('/api/reservas/mis-reservas', {
+        const response = await fetch('api/reservas/mis-reservas', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('token')
             }
@@ -135,7 +135,7 @@ async function listarReservas(){
         historial.sort((a, b) => (b.fecha + b.horaInicio).localeCompare(a.fecha + a.horaInicio));
 
         if(proximas.length === 0){
-            proximasMensajeHTML.innerHTML = `No tienes ninguna cita pendiente. <a class='enlace' href='/reservas'>Reserva una ahora</a>.`;
+            proximasMensajeHTML.innerHTML = `No tienes ninguna cita pendiente. <a class='enlace' href='reservas'>Reserva una ahora</a>.`;
         }else{
             proximasMensajeHTML.innerHTML = '';
             for(reserva of proximas){
@@ -155,7 +155,7 @@ async function listarReservas(){
         // mostrarMensaje(mensajeHTML, 'No se han podido cargar tus reservas. Inténtalo más tarde.', 'error');
         // proximasMensajeHTML.innerHTML = '';
         // historialMensajeHTML.innerHTML = '';
-        window.location.href = '/error';
+        window.location.href = 'error';
     }
 }
 
@@ -170,7 +170,7 @@ async function cancelarReserva(e){
         return;
     }
     const mensajeHTML = document.getElementById('reservas-mensaje');
-    const response = await fetch(`/api/reservas/${e.target.dataset.id}/cancelar`, {
+    const response = await fetch(`api/reservas/${e.target.dataset.id}/cancelar`, {
         method: 'PATCH',
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -194,7 +194,7 @@ function mostrarMensaje(mensajeHTML, texto, tipo) {
 function cerrarSesion(){
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
-    window.location.href = '/login';
+    window.location.href = 'login';
 }
 
 if(comprobarSesion()){

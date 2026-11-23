@@ -2,7 +2,7 @@ async function listarServicios() {
     const mensajeHTML = document.getElementById('servicios-mensaje');
     const listarHTML = document.getElementById('lista-servicios');
     try {
-        const response = await fetch('/api/servicios');
+        const response = await fetch('api/servicios');
         const servicios = await response.json();
         let servicio = "";
         // console.log(servicios);
@@ -25,8 +25,8 @@ async function listarServicios() {
                         <span class='servicio__duracion'>${servicio.duracion} min</span>
                     </div>
                     <div class='servicio__acciones'>
-                        <a class='boton boton--secundario' href='/servicios/${servicio._id}'>Ver detalles</a>
-                        <a class='boton boton--principal' href='/reservas?servicio=${servicio._id}'>Reservar</a>
+                        <a class='boton boton--secundario' href='servicios/${servicio._id}'>Ver detalles</a>
+                        <a class='boton boton--principal' href='reservas?servicio=${servicio._id}'>Reservar</a>
                     </div>
                 </article>
             `

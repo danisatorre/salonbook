@@ -52,6 +52,7 @@ cp .env.example .env
 | `MONGO_PASSWORD` | Contraseña de MongoDB                         | `contraseña de admin de MongoDB`             |
 | `MONGODB_URL`    | Host, puerto y base de datos de MongoDB       | `localhost:27017/salonbook?authSource=admin` |
 | `JWT_SECRET`     | Clave secreta para firmar los tokens JWT      | `una_cadena_larga_y_aleatoria`               |
+| `BASE_PATH`      | *(Opcional)* Prefijo de la URL si la web se publica en una subruta, p. ej. detrás de Apache. Vacío en local | `/salonbook`                                 |
 
 > `MONGO_USER` y `MONGO_PASSWORD` los usa tanto Docker (para crear el usuario de MongoDB) como la web (para conectarse), así que deben ser los mismos.
 

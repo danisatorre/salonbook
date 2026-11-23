@@ -4,7 +4,7 @@ async function mostrarServicio(){
     const servicioId = window.location.pathname.split('/').pop();
     // console.log(servicioId);
     try {
-        const response = await fetch(`/api/servicios/${servicioId}`);
+        const response = await fetch(`api/servicios/${servicioId}`);
         const servicio = await response.json();
         // console.log(servicio);
         if(!response.ok){
@@ -18,7 +18,7 @@ async function mostrarServicio(){
         }
         document.title = `${servicio.nombre} | SalonBook`;
         detalleHTML.innerHTML = `
-            <img class='detalle__imagen' src='/images/servicios/${servicio.imgServicio}' alt='${servicio.nombre}'>
+            <img class='detalle__imagen' src='images/servicios/${servicio.imgServicio}' alt='${servicio.nombre}'>
             <div class='detalle__contenido' id='${servicio._id}'>
                 <h1 class='detalle__titulo'>${servicio.nombre}</h1>
                 <p class='detalle__descripcion'>${servicio.descripcion || 'Sin descripción'}</p>
@@ -33,8 +33,8 @@ async function mostrarServicio(){
                     </div>
                 </div>
                 <div class='detalle__acciones'>
-                    <a class='boton boton--principal' href='/reservas?servicio=${servicio._id}'>Reservar este servicio</a>
-                    <a class='boton boton--secundario' href='/#servicios'>Ver otros servicios</a>
+                    <a class='boton boton--principal' href='reservas?servicio=${servicio._id}'>Reservar este servicio</a>
+                    <a class='boton boton--secundario' href='./#servicios'>Ver otros servicios</a>
                 </div>
             </div>
         `
@@ -42,7 +42,7 @@ async function mostrarServicio(){
         detalleHTML.classList.remove('oculto');
     } catch (error) {
         // mostrarMensaje(mensajeHTML, 'No se ha podido cargar el servicio. Inténtalo más tarde.', 'error');
-        window.location.href = '/error';
+        window.location.href = 'error';
     }
 }
 
@@ -80,7 +80,7 @@ function usuarioLogueado(){
 function cerrarSesion(){
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
-    window.location.href = '/';
+    window.location.href = './';
 }
 
 function mostrarMensaje(mensajeHTML, texto, tipo) {

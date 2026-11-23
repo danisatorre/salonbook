@@ -3,7 +3,7 @@ function comprobarSesion(){
     const usuario = JSON.parse(localStorage.getItem('usuario'));
     // Sin sesión no se puede reservar: lo mandamos al login
     if(!token || !usuario){
-        window.location.href = '/login';
+        window.location.href = 'login';
         return false;
     }
     document.getElementById('saludo-usuario').innerHTML = `Hola ${usuario.nombre}, elige el servicio, el día y la hora que prefieras.`;
@@ -35,7 +35,7 @@ async function cargarServicios(){
     const selectHTML = document.getElementById('servicio');
     const mensajeHTML = document.getElementById('reserva-mensaje');
     try {
-        const response = await fetch('/api/servicios');
+        const response = await fetch('api/servicios');
         const servicios = await response.json();
         let servicio = "";
         // console.log(servicios);
@@ -64,7 +64,7 @@ async function cargarServicios(){
         }
     } catch (error) {
         // mostrarMensaje(mensajeHTML, 'No se han podido cargar los servicios. Inténtalo más tarde.', 'error');
-        window.location.href = '/error';
+        window.location.href = 'error';
     }
 }
 
@@ -76,7 +76,7 @@ function mostrarInfoServicio(){
         infoHTML.classList.add('oculto');
         return;
     }
-    infoHTML.innerHTML = `<b>Precio:</b> ${opcion.dataset.precio} € · <b>Duración:</b> ${opcion.dataset.duracion} min · <a class='enlace' href='/servicios/${selectHTML.value}'>Más información</a>`;
+    infoHTML.innerHTML = `<b>Precio:</b> ${opcion.dataset.precio} € · <b>Duración:</b> ${opcion.dataset.duracion} min · <a class='enlace' href='servicios/${selectHTML.value}'>Más información</a>`;
     infoHTML.classList.remove('oculto');
 }
 
@@ -99,7 +99,7 @@ async function cargarHoras(){
     }
     horasMensajeHTML.innerHTML = `Buscando horas libres…`;
     try {
-        const response = await fetch(`/api/reservas/disponibles?fecha=${fecha}&servicio=${servicio}`);
+        const response = await fetch(`api/reservas/disponibles?fecha=${fecha}&servicio=${servicio}`);
         let horas = await response.json();
         let hora = "";
         // console.log(horas);
@@ -135,7 +135,7 @@ async function cargarHoras(){
         }
     } catch (error) {
         // horasMensajeHTML.innerHTML = `<a class='mensaje--error'>No se han podido cargar las horas. Inténtalo más tarde.</a>`;
-        window.location.href = '/error';
+        window.location.href = 'error';
     }
 }
 
@@ -170,7 +170,7 @@ async function crearReserva(event){
     botonHTML.disabled = true;
     botonHTML.innerHTML = `Reservando...`;
     try {
-        const response = await fetch('/api/reservas', {
+        const response = await fetch('api/reservas', {
             method: 'POST',
             body: JSON.stringify({
                 servicio: servicio,
@@ -204,13 +204,13 @@ async function crearReserva(event){
         setTimeout(() => {
             // alert("Reserva correcta");
             // return;
-            window.location.href = '/mis-reservas';
+            window.location.href = 'mis-reservas';
         }, 2000);
     } catch (error) {
         // mostrarMensaje(mensajeHTML, 'No se ha podido conectar con el servidor. Inténtalo más tarde.', 'error');
         // botonHTML.disabled = false;
         // botonHTML.innerHTML = `Confirmar reserva`;
-        window.location.href = '/error';
+        window.location.href = 'error';
     }
 }
 
@@ -275,7 +275,7 @@ function mostrarMensaje(mensajeHTML, texto, tipo) {
 function cerrarSesion(){
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
-    window.location.href = '/login';
+    window.location.href = 'login';
 }
 
 if(comprobarSesion()){

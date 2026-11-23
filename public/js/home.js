@@ -43,7 +43,7 @@ function usuarioLogueado(){
 function cerrarSesion(e){
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
-    window.location.href = '/';
+    window.location.href = './';
 }
 
 bienvenidaUsuario();

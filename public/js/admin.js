@@ -2,11 +2,11 @@ function comprobarSesion(){
     const token = localStorage.getItem('token');
     const usuario = JSON.parse(localStorage.getItem('usuario'));
     if(!token || !usuario){
-        window.location.href = '/login';
+        window.location.href = 'login';
         return false;
     }
     if(usuario.rol !== 'admin'){
-        window.location.href = '/';
+        window.location.href = './';
         return false;
     }
     document.getElementById('saludo-usuario').innerHTML = `Hola ${usuario.nombre}, gestiona aquí las reservas y los servicios.`;
@@ -85,7 +85,7 @@ async function listarReservas(){
     }
     reservasMensajeHTML.innerHTML = `Cargando reservas…`;
     try {
-        const response = await fetch(`/api/reservas?fecha=${fecha}`, {
+        const response = await fetch(`api/reservas?fecha=${fecha}`, {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('token')
             }
@@ -111,7 +111,7 @@ async function listarReservas(){
         }
     } catch (error) {
         // reservasMensajeHTML.innerHTML = `<a class='mensaje--error'>No se han podido cargar las reservas. Inténtalo más tarde.</a>`;
-        window.location.href = '/error';
+        window.location.href = 'error';
     }
 }
 
@@ -129,7 +129,7 @@ async function cancelarReserva(e){
     e.target.disabled = true;
     e.target.innerHTML = `Cancelando...`;
     try {
-        const response = await fetch(`/api/reservas/${e.target.dataset.id}/cancelar`, {
+        const response = await fetch(`api/reservas/${e.target.dataset.id}/cancelar`, {
             method: 'PATCH',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -152,7 +152,7 @@ async function cancelarReserva(e){
         // mostrarMensaje(mensajeHTML, 'No se ha podido conectar con el servidor. Inténtalo más tarde.', 'error');
         // e.target.disabled = false;
         // e.target.innerHTML = `Cancelar cita`;
-        window.location.href = '/error';
+        window.location.href = 'error';
     }
 }
 
@@ -163,7 +163,7 @@ async function listarServicios(){
     const serviciosMensajeHTML = document.getElementById('servicios-mensaje');
     serviciosHTML.innerHTML = '';
     try {
-        const response = await fetch('/api/servicios');
+        const response = await fetch('api/servicios');
         const servicios = await response.json();
         let servicio = "";
         // console.log(servicios);
@@ -194,7 +194,7 @@ async function listarServicios(){
         }
     } catch (error) {
         // serviciosMensajeHTML.innerHTML = `<a class='mensaje--error'>No se han podido cargar los servicios. Inténtalo más tarde.</a>`;
-        window.location.href = '/error';
+        window.location.href = 'error';
     }
 }
 
@@ -210,10 +210,10 @@ async function guardarServicio(event){
     // alert("Datos del servicio válidos");
     // return;
 
-    let url = '/api/servicios';
+    let url = 'api/servicios';
     let metodo = 'POST';
     if(id !== ''){
-        url = `/api/servicios/${id}`;
+        url = `api/servicios/${id}`;
         metodo = 'PATCH';
     }
     const textoBoton = botonHTML.innerHTML;
@@ -260,14 +260,14 @@ async function guardarServicio(event){
         // mostrarMensaje(mensajeHTML, 'No se ha podido conectar con el servidor. Inténtalo más tarde.', 'error');
         // botonHTML.disabled = false;
         // botonHTML.innerHTML = textoBoton;
-        window.location.href = '/error';
+        window.location.href = 'error';
     }
 }
 
 async function editarServicio(id){
     const mensajeHTML = document.getElementById('servicio-mensaje');
     try {
-        const response = await fetch(`/api/servicios/${id}`);
+        const response = await fetch(`api/servicios/${id}`);
         const servicio = await response.json();
         // console.log(servicio);
         if(!response.ok){
@@ -288,7 +288,7 @@ async function editarServicio(id){
         document.getElementById('form-servicio').scrollIntoView({ behavior: 'smooth' });
     } catch (error) {
         // mostrarMensaje(mensajeHTML, 'No se ha podido cargar el servicio. Inténtalo más tarde.', 'error');
-        window.location.href = '/error';
+        window.location.href = 'error';
     }
 }
 
@@ -299,7 +299,7 @@ async function eliminarServicio(id){
     }
     const mensajeHTML = document.getElementById('admin-mensaje');
     try {
-        const response = await fetch(`/api/servicios/${id}`, {
+        const response = await fetch(`api/servicios/${id}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -322,7 +322,7 @@ async function eliminarServicio(id){
         listarServicios();
     } catch (error) {
         // mostrarMensaje(mensajeHTML, 'No se ha podido conectar con el servidor. Inténtalo más tarde.', 'error');
-        window.location.href = '/error';
+        window.location.href = 'error';
     }
 }
 
@@ -410,7 +410,7 @@ function mostrarMensaje(mensajeHTML, texto, tipo) {
 function cerrarSesion(){
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
-    window.location.href = '/login';
+    window.location.href = 'login';
 }
 
 if(comprobarSesion()){

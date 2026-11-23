@@ -13,7 +13,7 @@ async function iniciarSesion(event) {
     botonHTML.disabled = true;
     botonHTML.innerHTML = `Accediendo...`;
     try {
-        const response = await fetch('/api/auth/login', {
+        const response = await fetch('api/auth/login', {
             method: 'POST',
             body: JSON.stringify({
                 email: email,
@@ -47,16 +47,16 @@ async function iniciarSesion(event) {
             // alert("Acceso correcto");
             // return;
             if(datos.usuario.rol === 'admin'){
-                window.location.href = '/admin';
+                window.location.href = 'admin';
             }else{
-                window.location.href = '/';
+                window.location.href = './';
             }
         }, 2000);
     } catch (error) {
         // mostrarMensaje(mensajeHTML, 'No se ha podido conectar con el servidor. Inténtalo más tarde.', 'error');
         // botonHTML.disabled = false;
         // botonHTML.innerHTML = `Acceder`;
-        window.location.href = '/error';
+        window.location.href = 'error';
     }
 }
 
@@ -123,7 +123,7 @@ function usuarioLogueado(){
         setTimeout(() => {
             localStorage.removeItem('token');
             localStorage.removeItem('usuario');
-            window.location.href = '/';
+            window.location.href = './';
         }, 2000);
     });
 }

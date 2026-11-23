@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <base href="/">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SalonBook</title>
-  <link rel="icon" type="image/png" href="/images/favicon.png">
-  <script src="/js/home.js" defer></script>
-  <script src="/js/servicios.js" defer></script>
-  <link rel="stylesheet" href="/css/app.css">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <script src="js/home.js" defer></script>
+  <script src="js/servicios.js" defer></script>
+  <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
   <header class="cabecera">
-    <a href="/" class="logo">SalonBook</a>
+    <a href="./" class="logo">SalonBook</a>
     <nav class="menu">
-      <a href="/login" class="menu__enlace" id="login">Iniciar sesión</a>
-      <a href="/register" class="boton boton--principal boton--pequeno" id="register">Registrarse</a>
-      <a href="/reservas" class="menu__enlace oculto" id="reservar-cita">Reservar cita</a>
-      <a href="/mis-reservas" class="menu__enlace oculto" id="mis-reservas">Ver mis citas</a>
+      <a href="login" class="menu__enlace" id="login">Iniciar sesión</a>
+      <a href="register" class="boton boton--principal boton--pequeno" id="register">Registrarse</a>
+      <a href="reservas" class="menu__enlace oculto" id="reservar-cita">Reservar cita</a>
+      <a href="mis-reservas" class="menu__enlace oculto" id="mis-reservas">Ver mis citas</a>
       <button class="boton boton--secundario boton--pequeno oculto" id="logout">Cerrar sesión</button>
     </nav>
   </header>
@@ -33,7 +34,7 @@
           Sin llamadas y sin esperas.
         </p>
         <div class="hero__acciones">
-          <a href="/reservas" class="boton boton--principal">Reservar cita</a>
+          <a href="reservas" class="boton boton--principal">Reservar cita</a>
           <a href="#servicios" class="boton boton--secundario">Ver servicios</a>
         </div>
       </div>
