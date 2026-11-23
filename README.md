@@ -138,3 +138,6 @@ Al volver a iniciar sesión con ese usuario se podrá acceder a `/admin`.
 | `/api/reservas`  | Gestión de reservas             |
 
 Las rutas que hacen cambios importantes necesitan la cabecera `Authorization: Bearer <token>`, con el token que devuelve el login.
+
+## ACCEDER AL PROYECTO DESPLEGADO 
+Para acceder al proyecto en el lugar en el que lo tengo desplegado hay que acceder desde un navegador a la siguiente url `www.dsatorre.es/salonbook`
